@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello</title>
+</head>
+<body>
+<h1>Message</h1>
+
+<p>Message from Flutter: <span id="messageFromFlutter"></span></p>
+<button onclick="sendMessageToFlutter()">Send Message to Flutter</button>
+
+<script>
+    var counter = 0;
+    // receive messages from Flutter
+    function receiveMessageFromFlutter(message) {
+      document.getElementById('messageFromFlutter').innerText = message;
+      counter = message;
+      console.log(counter);
+    }
+
+    // send a message to Flutter
+    function sendMessageToFlutter() {
+      var message = (counter++).toString();
+      messageHandler.postMessage(message);
+    }
+
+  </script>
+</body>
+</html>
